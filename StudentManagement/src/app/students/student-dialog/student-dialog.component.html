@@ -1,0 +1,33 @@
+<div class="container"> 
+  <p *ngIf="isLoading">Loading<i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i></p>
+  <p-overlayPanel #op>
+    <ng-template pTemplate>
+      <table class="table table-hover"*ngIf='students'>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>User Name</th>
+            <th>Email</th>
+            <th>phone</th>
+            <th>website</th>
+          
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let item of students'>
+            <td>{{ item.id }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.username }}</td>
+            <td>{{ item.email }}</td>
+            <td>{{ item.phone }}</td>
+            <td>{{item.website}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-template>
+ </p-overlayPanel>
+</div>
+<i class="pi pi-user"></i>
+<button pButton pRipple type="button" label="Student Dialog" class="p-button-secondary p-button-text"(click)="op.toggle($event)"></button>

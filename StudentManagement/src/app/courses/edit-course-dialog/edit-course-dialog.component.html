@@ -1,0 +1,31 @@
+<p-dialog header="Edit Courses" [(visible)]="display" [style]="{width: '550px'}" [modal]="true" styleClass="p-fluid">
+  <ng-template pTemplate="content">
+    <form #updateForm="ngForm" (ngSubmit)="onSubmit(updateForm.value)">
+      <div class="form-group">
+        <div class="p-field">
+          <label for="id">ID</label>
+          <input type="text" class="form-control" id="id" name="ID" class="form-control" placeholder="Enter id" ngModel>
+        </div>
+
+        <div class="p-field">
+          <label for="name">Name</label>
+          <input type="text" pInputText id="name" name="name" class="form-control" placeholder="Enter Name" ngModel>
+        </div>
+
+
+        <div class="p-field">
+          <label for="num"> Number of registered students</label>
+          <input type="text" pInputText id="number of students" name="studentnum" class="form-control"
+            placeholder="Enter Number" ngModel>
+        </div>
+      </div>
+
+      <button type="submit" pButton pRipple label="Save" class="p-button-text"></button>
+
+    </form>
+  </ng-template>
+
+</p-dialog>
+
+<button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2"
+  (click)="showDialog()"></button>

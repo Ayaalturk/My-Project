@@ -1,0 +1,69 @@
+<p-dialog
+  [(visible)]="display"
+  [style]="{ width: '550px' }"
+  header="Edit Dialog"
+  [modal]="true"
+  styleClass="p-fluid"
+>
+  <ng-template pTemplate="content">
+    <form [formGroup]="updateForm" (ngSubmit)="onSubmit(updateForm.value)">
+      <div class="form-group">
+        <div class="p-field">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            pInputText
+            id="name"
+            name="name"
+            class="form-control"
+            placeholder="Enter Name"
+            formControlName="name"
+          />
+        </div>
+
+        <div class="p-field">
+          <label for="email">Email</label>
+          <input
+            type="text"
+            pInputText
+            id="email"
+            name="email"
+            class="form-control"
+            placeholder="Enter Email"
+            formControlName="email"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Phone</label>
+          <input
+            type="text"
+            pInputText
+            id="phone"
+            name="phone"
+            class="form-control"
+            placeholder="Enter Phone"
+            formControlName="phone"
+          />
+        </div>
+      </div>
+      <button
+        pButton
+        pRipple
+        label="Save"
+        icon="pi pi-check"
+        class="p-button-text"
+        type="submit"
+      ></button>
+    </form>
+  </ng-template>
+</p-dialog>
+
+<!-- <button
+  pButton
+  pRipple
+  type="button"
+  label="Edit"
+  class="p-button-rounded p-button-secondary"
+  (click)="showDialog()"
+></button> -->

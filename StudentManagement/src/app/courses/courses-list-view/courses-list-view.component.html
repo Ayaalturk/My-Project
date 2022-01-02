@@ -1,0 +1,64 @@
+<div class="container">
+
+  <p *ngIf="isLoading">Loading<i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i></p>
+  <div class="border">
+    <app-new-course-dialog></app-new-course-dialog>
+  </div>
+  <br>
+  <p-table [value]="course" styleClass="p-datatable-striped" [paginator]="true" [rows]="10"
+    [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [rowsPerPageOptions]="[10,25,50]">>
+
+    <ng-template pTemplate="caption">
+      <div class="p-d-flex p-ai-center p-jc-between">
+        courses-list
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="header">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Number of registered students</th>
+        <th>Add</th>
+        <th>Edit</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-contact>
+      <!--tr *ngFor="let contact of course "-->
+      <tr>
+        <td>{{contact.id}}</td>
+        <td>{{contact.name}}</td>
+        <td>{{contact.postId}}</td>
+        <td><button pButton pRipple type="button" class="p-button-rounded p-button-danger" (click)="getMessage()"
+            *ngIf="contact.postId> 10 ;else open">unavailable</button>
+
+          <ng-template #open>
+            <button pButton pRipple type="button" class="p-button-rounded p-button-success"
+              (click)="addOnstudents()">Available</button>
+          </ng-template>
+        </td>
+        <!--td><a [routerLink]="['/course/edit', contact.id ]" class="btn btn-info" >Edit</a></td-->
+        <td>
+          <app-edit-course-dialog></app-edit-course-dialog>
+          <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
+            (click)="deleteCourse(contact.id)"></button>
+        </td>
+      </tr>
+
+    </ng-template>
+
+
+    <ng-template pTemplate="paginatorleft">
+    </ng-template>
+    <ng-template pTemplate="paginatorright">
+    </ng-template>
+
+    <ng-template pTemplate="summary">
+      <div class="p-d-flex p-ai-center p-jc-between">
+        In total there are {{course ? course.length : 0 }} courses.
+      </div>
+    </ng-template>
+  </p-table>
+</div>
